@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {ObjectId} = mongoose.Schema;
+const { ObjectId } = mongoose.Schema;
 
 const productSchema = new mongoose.Schema(
   {
@@ -22,11 +22,15 @@ const productSchema = new mongoose.Schema(
     },
     category: {
       type: ObjectId,
-      ref: 'Category',
+      ref: "Category",
       require: true
     },
     quantity: {
+      type: Number
+    },
+    sold: {
       type: Number,
+      default: 0
     },
     photo: {
       data: Buffer,
