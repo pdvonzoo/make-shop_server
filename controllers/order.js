@@ -2,7 +2,7 @@ const { Order, CartItem } = require("../models/order");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
 exports.orderById = (req, res, next, id) => {
-  Order.findBtId(id)
+  Order.findById(id)
     .populate("products.product", "name price")
     .exec((err, order) => {
       if (err || !order) {
@@ -48,6 +48,7 @@ exports.getStatusValues = (req, res) => {
 };
 
 exports.updateOrderStatus = (req, res) => {
+  console.log(req.body);
   Order.update(
     { _id: req.body.orderId },
     { $set: { status: req.body.status } },
