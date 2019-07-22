@@ -98,22 +98,6 @@ exports.update = (req, res) => {
     let product = req.product;
     product = _.extend(product, fields);
 
-    // check foe all fields
-    const { name, description, price, category, quantity, shipping } = fields;
-
-    if (
-      !name ||
-      !description ||
-      !price ||
-      !category ||
-      !quantity ||
-      !shipping
-    ) {
-      return res.status(400).json({
-        error: "All fields are required"
-      });
-    }
-
     if (files.photo) {
       // console.log("FILES PHOTO:", files.photo);
       if (files.photo.size > 1000000) {
